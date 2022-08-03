@@ -55,18 +55,8 @@ exports.delete = async (req, res) => {
       return res.status(500).json({ message: "Failed!" });
     }
     return res.json({
-      deletedEmployee,
       message: "Employee deleted successfully!",
     });
-  } catch (error) {
-    return res.status(500).send("Something went wrong!");
-  }
-};
-
-//GET A SINGLE EMPLOYEES
-
-exports.getEmployee = async (req, res) => {
-  try {
   } catch (error) {
     return res.status(500).send("Something went wrong!");
   }
@@ -77,6 +67,16 @@ exports.getEmployee = async (req, res) => {
 exports.getAllEmployees = async (req, res) => {
   try {
     const { page, limit } = req.query;
+
+    const employees = await EmployeeService.GetEmployees(page, limit);
+
+    if (!employees) {
+      return res.status(500).json({ message: "Failed!" });
+    }
+    return res.json({
+      employees,
+      message: "Employees fetched successfully!",
+    });
   } catch (error) {
     return res.status(500).send("Something went wrong!");
   }
