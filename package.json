@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-     "start": "pm2 start index.js --node-args='--max-old-space-size=3072'",
+    "start": "pm2 start server.js --node-args='--max-old-space-size=3072'",
     "start:dev": "nodemon server.js"
   },
   "keywords": [],
@@ -16,6 +16,6 @@
     "express": "^4.18.1",
     "mongoose": "^6.5.0",
     "nodemon": "^2.0.19",
-     "pm2": "^5.2.0"
+    "pm2": "^5.2.0"
   }
 }
